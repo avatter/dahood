@@ -1,0 +1,48 @@
+
+<h2>Location anpassen</h2>
+
+  
+    <%= form_for @location, html: { multipart: true } do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h4>Whoops! <%= @location.errors.count %> Fehler haben das Speichern verhindert. </h4>
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="form-group">
+        <%= f.label :strasse %>
+        <%= f.text_field :strasse, autofocus: true, type: "text", placeholder: "Deine Straße", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :hausnummer %>
+        <%= f.text_field :hausnummer, type: "text", placeholder: "Deine Hausnummer", class: "form-control" %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label :Postleitzahl %>
+        <%= f.text_field :plz, type: "text", placeholder: "Deine Postleitzahl", class: "form-control" %>
+      </div>
+
+       <div class="form-group">
+        <%= f.label :Stadt %>
+        <%= f.text_field :stadt, type: "text", placeholder: "Deine Stadt", class: "form-control" %>
+      </div>
+
+  
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+      <div class="actions">
+    <%= f.submit "Location anpassen", class: "btn btn-primary" %>
+      </div>
+
+  
+<% end %>
+

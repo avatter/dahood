@@ -1,0 +1,162 @@
+
+
+<div class="panel panel-default">
+ 
+  <div class="panel-heading">
+    <h2>Deine Location</h2>
+    <h4><%= @location.strasse %> <%= @location.hausnummer %></h4>
+  
+</div>
+
+<div class="panel-body">
+<!-- Nav tabs -->
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+  <li><a href="#details" data-toggle="tab">Details</a></li>
+  <li><a href="#bearbeiten" data-toggle="tab">Bearbeiten</a></li>
+  
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home">
+<!-- Location Home Anfang -->
+<br>
+
+
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=400x400&scale=1&sensor=true&zoom=16&markers=icon:http://www.avatter.de/wordpress/wp-content/uploads/2014/01/home-pin.png|shadow:true|#{@location.latitude},#{@location.longitude}", class: "img-rounded" %>  
+
+ &nbsp;&nbsp;&nbsp; <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=#{@location.strasse},#{@location.hausnummer}%2C#{@location.plz}&sensor=false", class: "img-rounded"  %>
+
+<%= image_tag @location.image.url (:thumb)%>
+
+
+<!-- Location Home Ende -->
+  </div>
+
+
+  <div class="tab-pane" id="details">
+<!-- Location Details Anfang -->
+
+
+<br>
+<p>
+  <strong>Strasse:</strong>
+  <%= @location.strasse %>
+</p>
+
+<p>
+  <strong>Hausnummer:</strong>
+  <%= @location.hausnummer %>
+</p>
+
+<p>
+  <strong>Plz:</strong>
+  <%= @location.plz %>
+</p>
+
+<p>
+  <strong>Stadt:</strong>
+  <%= @location.stadt %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @location.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @location.longitude %>
+</p>
+
+
+
+<!-- Location Details Ende -->
+
+  </div>
+  <div class="tab-pane" id="bearbeiten">
+    <!-- Location Bearbeiten Anfang -->
+<%= render 'locations/formedit'%>
+<!-- Location Bearbeiten Ende -->
+  </div>
+
+</div>
+
+
+
+
+
+<br><br>
+
+
+
+
+ 
+
+
+
+
+<h2>Was gibt's Neues?</h2>
+
+
+<div class:"jumbotron">
+<%= form_for([@location, @location.comments.build]) do |f| %>
+    <p>
+    <%= f.text_area :body, class: "form-control", style: "width: 80%" %>
+
+  </p>
+  <p>
+    <div align="left"> <%= f.submit "Posten", class: "btn btn-primary" %></div>
+
+
+
+<% end %>
+</div>
+
+<br><br>
+
+
+
+
+<% @location.comments.each do |comment| %>
+    <div class="panel panel-default">
+      <div class="panel-body"> 
+
+
+<table width="100%">
+  <tr>
+    <td><strong><%= "Nachricht-Nr." unless comment.id.blank? %> <%= comment.id %></strong></td>
+    <td  valign="middle"> <p class="zeitangabe"><%= "vor" unless comment.id.blank? %>  <%= time_ago_in_words(comment.created_at) unless comment.id.blank? %></p></td>
+  </tr>
+</table>
+     
+               <p class="kommentar"><%= comment.body unless comment.body.blank? %></p> 
+              
+                 <div align="right"><%= link_to 'Löschen', [@location, comment], method: :delete, data: { confirm: 'Are you sure?' } unless comment.id.blank?  %></div>
+      
+      </p>
+     </div>
+    </div>
+<% end %>
+
+
+
+
+</div>
+
+
+ <div class="panel-footer">
+
+
+
+<%= link_to 'Zurück', locations_path %>
+
+  </div>
+</div>
+
+
+
+
+

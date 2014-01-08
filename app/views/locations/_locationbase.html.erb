@@ -1,0 +1,47 @@
+
+ <div class="panel-body">
+
+<p>
+  <strong>Strasse:</strong>
+  <%= @location.strasse %>
+</p>
+
+<p>
+  <strong>Hausnummer:</strong>
+  <%= @location.hausnummer %>
+</p>
+
+<p>
+  <strong>Plz:</strong>
+  <%= @location.plz %>
+</p>
+
+<p>
+  <strong>Stadt:</strong>
+  <%= @location.stadt %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @location.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @location.longitude %>
+</p>
+
+<p>
+
+
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=400x400&scale=1&sensor=true&zoom=16&markers=icon:http://www.avatter.de/wordpress/wp-content/uploads/2014/01/home-pin.png|shadow:true|#{@location.latitude},#{@location.longitude}", class: "img-rounded" %>  
+
+ &nbsp;&nbsp;&nbsp; <%= image_tag "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=#{@location.strasse},#{@location.hausnummer}%2C#{@location.plz}&sensor=false", class: "img-rounded"  %>
+</p>
+
+
+
+
+<%= link_to edit_location_path(@location) do %> 
+<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"> Anpassen</button><% end %>
+<br><br>

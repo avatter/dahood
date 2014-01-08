@@ -1,0 +1,59 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
+
+
+
+$body-bg: #2c3e50;
+$link-color: #1abc9c;
+$btn-primary-color: #ffffff;
+$btn-primary-bg: #1abc9c;
+$font-family-sans-serif: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-size-base: 15px;
+$jumbotron-padding: 20px;
+$jumbotron-bg: white;
+$jumbotron-font-size: 15px;
+$navbar-height: 80px;
+$navbar-default-bg: #3e5266;
+$navbar-default-color: white;
+$navbar-default-link-color: white;
+$navbar-default-link-hover-color: #bdc3c7;
+/*$panel-default-text: white;*/
+/*$panel-default-heading-bg: #2c3e50;*/
+/*$panel-default-link-color: white;*/
+$nav-tabs-active-link-hover-bg: white;
+
+
+
+@import 'bootstrap';
+
+
+
+
+
+
+.center {
+	text-align: center;
+}
+
+.navbar-brand {
+	font-weight: bold;
+}
+
+
+.impressum {
+	font-size: 14px;
+	text-align: right;
+}
+
+
+.zeitangabe {
+	font-size: 13px;
+	text-align: right;
+	font-style: italic;
+	color: #AAAAAA;
+}
+
+
+.kommentar {
+	font-size: 20px;
+}

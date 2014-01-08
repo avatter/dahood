@@ -1,0 +1,36 @@
+<h1>Location-Übersicht</h1>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Strasse</th>
+      <th>Hausnummer</th>
+      <th>Plz</th>
+      <th>Stadt</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.id %></td>
+        <td><%= location.strasse %></td>
+        <td><%= location.hausnummer %></td>
+        <td><%= location.plz %></td>
+        <td><%= location.stadt %></td>
+        <td><%= location.latitude %></td>
+        <td><%= link_to 'Anzeigen', location %></td>
+        <td><%= link_to 'Ändern', edit_location_path(location) %></td>
+        <td><%= link_to 'Löschen', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Neue Location anlegen', new_location_path, class:"btn btn-primary     btn-lg"  %>
+
